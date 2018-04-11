@@ -1,0 +1,21 @@
+<h3>
+  <%= @restaurant.name %>
+  <small>
+    <%= link_to "", restaurant_path(@restaurant),
+      :class => "fas fa-trash-alt fa-xs",
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  </small>
+</h3>
+<p><%= @restaurant.category %></p>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p>
+  <% @restaurant.reviews.each do |review| %>
+    <%= "#{review.rating}-#{review.content}" %>
+  <% end %>
+</p>
+
+<%= render 'reviews/form', restaurant: @restaurant, review: @review %>
+
+<%= link_to "Back", restaurants_path %>
